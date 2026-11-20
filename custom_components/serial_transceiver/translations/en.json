@@ -1,0 +1,32 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "data": {
+          "port": "Serial port"
+        },
+        "data_description": {
+          "port": "Choose the serial adapter. /dev/serial/by-id paths stay the same after a reboot."
+        }
+      }
+    },
+    "error": {
+      "port_not_found": "That port does not exist on this system. If Home Assistant runs in Docker, the adapter must be passed through to the container."
+    },
+    "abort": {
+      "already_configured": "This port is already set up."
+    }
+  },
+  "entity": {
+    "notify": {
+      "sender": {
+        "name": "Serial Transmitter @ {port}"
+      }
+    },
+    "sensor": {
+      "receiver": {
+        "name": "Serial Receiver @ {port}"
+      }
+    }
+  }
+}

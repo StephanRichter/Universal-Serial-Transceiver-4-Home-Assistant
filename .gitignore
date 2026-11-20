@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.venv/
+ha-config
+.idea
+*~
+Dockerfile

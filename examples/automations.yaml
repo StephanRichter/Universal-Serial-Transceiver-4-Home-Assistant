@@ -1,0 +1,15 @@
+- alias: Echo
+  description: 'This automation echoes back all messages received via the rs485_home_ttyacm0_sensor'
+  triggers:
+    - trigger: state
+      entity_id:
+        - sensor.serial_receiver_ttyacm0
+  conditions: []
+  actions:
+    - action: notify.send_message
+      metadata: {}
+      target:
+        entity_id: notify.serial_transmitter_ttyacm0
+      data:
+        message: I received "{{ states('sensor.serial_receiver_ttyacm0') }}"
+  mode: single
