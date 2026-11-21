@@ -1,6 +1,7 @@
 {
   "domain": "serial_transceiver",
   "name": "Universal Serial Transceiver",
+  "categories": ["hubs_protocols", "messaging_notifications", "computers_network"],
   "codeowners": ["@StephanRichter"],
   "config_flow": true,
   "documentation": "https://github.com/StephanRichter/Universal-Serial-Transceiver-4-Home-Assistant",
