@@ -7,7 +7,7 @@ This code is derived from https://github.com/RyanMathewson/home-assistant-onkyo-
 """
 from __future__ import annotations
 from collections.abc import Callable
-from .const import CLOSE_TIMEOUT, RECONNECT_DELAY
+from .const import CLOSE_TIMEOUT, RECONNECT_DELAY, SEND_GAP
 import asyncio, logging, serial_asyncio_fast, time
 
 
@@ -23,8 +23,9 @@ class RS485Connection:
             self._sensor.handle_value(text)
 
 
-    def __init__(self, port: str) -> None:
+    def __init__(self, port: str, baud_rate: int) -> None:
         self.port : str                      = port
+        self.baud_rate : int                 = baud_rate
         self.connected                       = False
         self._queue: asyncio.Queue[str]      = asyncio.Queue()
         self._last_error: str | None         = None
@@ -71,8 +72,8 @@ class RS485Connection:
         self._queue.put_nowait(message)
 
     async def _session(self) -> None:
-        _LOGGER.debug(f"Trying to connect to {self.port}")
-        reader, writer = await serial_asyncio_fast.open_serial_connection(url=self.port,baudrate=9600,bytesize=8,parity="N",stopbits=1,xonxoff=False,rtscts=False,exclusive=True)
+        _LOGGER.debug(f"Trying to connect to {self.port} with {self.baud_rate} symbols/sec")
+        reader, writer = await serial_asyncio_fast.open_serial_connection(url=self.port,baudrate=self.baud_rate,bytesize=8,parity="N",stopbits=1,xonxoff=False,rtscts=False,exclusive=True)
 
         self._queue = asyncio.Queue()
         tasks = [

@@ -30,7 +30,7 @@ class SerialReceiver(SensorEntity):
     def __init__(self, entry: ConfigEntry) -> None:
         port = entry.data[CONF_PORT].split('/')[-1]
         self._attr_unique_id = f"{port}_receiver"
-        _LOGGER.debug(f"SerialReceiver.__init(entry)__, entry: {entry}, id: {self._attr_unique_id}")
+        _LOGGER.debug(f"SerialReceiver.__init(entry)__, id: {self._attr_unique_id}")
         self._attr_translation_placeholders = {"port": port}
         self._connection : RS485Connection = entry.runtime_data
 

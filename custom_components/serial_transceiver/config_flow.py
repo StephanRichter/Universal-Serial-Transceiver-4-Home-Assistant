@@ -12,7 +12,7 @@ from homeassistant.config_entries import ConfigEntry, ConfigFlow, ConfigFlowResu
 from homeassistant.const import CONF_PORT
 from homeassistant.core import callback
 from homeassistant.helpers.selector import NumberSelector, NumberSelectorConfig, NumberSelectorMode, SelectSelector, SelectSelectorConfig, SelectSelectorMode, TextSelector, TextSelectorConfig
-from .const import BY_ID, DOMAIN
+from .const import BAUD_RATE, BAUD_RATES, BY_ID, DOMAIN
 
 
 
@@ -50,6 +50,9 @@ class RS485ConfigFlow(ConfigFlow, domain=DOMAIN):
                 {
                     vol.Required(CONF_PORT): SelectSelector(
                         SelectSelectorConfig(options=ports, custom_value=True, mode=SelectSelectorMode.DROPDOWN)
+                    ),
+                    vol.Optional(BAUD_RATE): SelectSelector(
+                        SelectSelectorConfig(options=BAUD_RATES, custom_value=False, mode=SelectSelectorMode.DROPDOWN)
                     )
                 }
             ),

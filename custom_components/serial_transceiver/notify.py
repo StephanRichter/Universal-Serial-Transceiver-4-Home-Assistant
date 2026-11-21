@@ -25,7 +25,7 @@ class SerialTransmitter(NotifyEntity):
     def __init__(self, entry: ConfigEntry) -> None:
         port = entry.data[CONF_PORT].split('/')[-1]
         self._attr_unique_id = f"{port}_transmitter"
-        _LOGGER.debug(f"SerialTransmitter.__init(entry)__, entry: {entry}, id: {self._attr_unique_id}")
+        _LOGGER.debug(f"SerialTransmitter.__init(entry)__, id: {self._attr_unique_id}")
         self._connection: RS485Connection = entry.runtime_data
         self._attr_translation_placeholders = {"port": port}
 
