@@ -3,10 +3,10 @@
   "name": "Universal Serial Transceiver",
   "codeowners": ["@StephanRichter"],
   "config_flow": true,
-  "documentation": "https://github.com/RyanMathewson/home-assistant-onkyo-serial",
+  "documentation": "https://github.com/StephanRichter/Universal-Serial-Transceiver-4-Home-Assistant",
   "integration_type": "device",
   "iot_class": "local_push",
-  "issue_tracker": "https://github.com/RyanMathewson/home-assistant-onkyo-serial/issues",
+  "issue_tracker": "https://github.com/StephanRichter/Universal-Serial-Transceiver-4-Home-Assistant/issues",
   "requirements": ["pyserial-asyncio-fast>=0.16"],
   "version": "0.1"
 }
