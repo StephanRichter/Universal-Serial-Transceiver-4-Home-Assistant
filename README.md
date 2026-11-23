@@ -1,5 +1,7 @@
 # Universal Serial Transceiver
 
+[![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=serial_transceiver)
+
 This Integration allows to connect to a serial device mapped as ttyX on linux systems.
 
 Contrary to Home Assistant's [Raw Serial](https://www.home-assistant.io/integrations/serial) integration, it provides both an inbound and an outbound channel, allowing to send and receive messages.

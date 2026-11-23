@@ -1,13 +1,14 @@
 {
-  "domain": "serial_transceiver",
   "name": "Universal Serial Transceiver",
-  "categories": ["hubs_protocols", "messaging_notifications", "computers_network"],
-  "codeowners": ["@StephanRichter"],
-  "config_flow": true,
-  "documentation": "https://github.com/StephanRichter/Universal-Serial-Transceiver-4-Home-Assistant",
+  "domain": "serial_transceiver",
+  "version": "0.1.0",
   "integration_type": "device",
+  "config_flow": true,
   "iot_class": "local_push",
+  "codeowners": ["@StephanRichter"],
+  "categories": ["hubs_protocols", "messaging_notifications", "computers_network"],
+  "documentation": "https://github.com/StephanRichter/Universal-Serial-Transceiver-4-Home-Assistant",
   "issue_tracker": "https://github.com/StephanRichter/Universal-Serial-Transceiver-4-Home-Assistant/issues",
-  "requirements": ["pyserial-asyncio-fast>=0.16"],
-  "version": "0.1"
+  "requirements": ["pyserial-asyncio-fast>=0.16"]
 }
+
