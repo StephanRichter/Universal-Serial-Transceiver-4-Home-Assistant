@@ -40,12 +40,6 @@ The integration holds the port with an exclusive lock, so nothing else can use i
 
 [examples/automations.yaml](examples/automations.yaml) shows an automation that echoes any message received via ttyAMA0 back to that serial
 
-## Makefile
-
-The [Makefile](Makefile) included in this repository is for development support only:
-When running `make`, it launches a home assistant container in podman an than spawns a virtual terminal inside that container.
-The running instance can be used at http://localhost:8123. When the _Universal Serial Transceiver_ integration is added and configured, this terminal will receive messages (Notifications) from the Transmitter. All messages posted in the terminal will be received by the receiver (Sender). 
-
 ## License
 
 [MIT](LICENSE)
