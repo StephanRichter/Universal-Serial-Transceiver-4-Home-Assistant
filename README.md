@@ -25,7 +25,10 @@ The adapter must be visible inside the container.
 
 ### HACS
 
-**TODO**
+Search for **Universal Serial Transceiver** at the marketplace.
+Click **Install**, confirm.
+You will be asked to select a device (`/dev/tty*` or `/dev/serial/*`) and a baud_rate (If you don't know: try 9600 first, it is most common).
+Fill the fields, click **OK** and you're good to go!
 
 ### Manual
 
