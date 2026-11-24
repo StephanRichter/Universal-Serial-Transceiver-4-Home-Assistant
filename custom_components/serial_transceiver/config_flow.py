@@ -30,7 +30,7 @@ def _list_ports() -> list[str]:
     return by_id + [path for path in devices if path not in resolved]
 
 
-class RS485ConfigFlow(ConfigFlow, domain=DOMAIN):
+class SerialConnectionConfigFlow(ConfigFlow, domain=DOMAIN):
     # Handle adding a receiver.
 
     async def async_step_user(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
@@ -51,7 +51,7 @@ class RS485ConfigFlow(ConfigFlow, domain=DOMAIN):
                     vol.Required(CONF_PORT): SelectSelector(
                         SelectSelectorConfig(options=ports, custom_value=True, mode=SelectSelectorMode.DROPDOWN)
                     ),
-                    vol.Optional(BAUD_RATE): SelectSelector(
+                    vol.Required(BAUD_RATE): SelectSelector(
                         SelectSelectorConfig(options=BAUD_RATES, custom_value=False, mode=SelectSelectorMode.DROPDOWN)
                     )
                 }

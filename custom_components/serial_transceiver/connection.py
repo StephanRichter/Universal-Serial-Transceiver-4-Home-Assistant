@@ -13,7 +13,7 @@ import asyncio, logging, serial_asyncio_fast, time
 
 _LOGGER = logging.getLogger(__name__)
 
-class RS485Connection:
+class SerialConnection:
     # Owns the serial port
 
     def _handle_frame(self, frame: bytes) -> None:

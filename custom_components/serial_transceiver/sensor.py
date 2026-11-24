@@ -12,7 +12,7 @@ from homeassistant.components.sensor import (
     SensorStateClass,
 )
 from homeassistant.const import CONF_PORT, UnitOfTemperature
-from .connection import RS485Connection
+from .connection import SerialConnection
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -32,7 +32,7 @@ class SerialReceiver(SensorEntity):
         self._attr_unique_id = f"{port}_receiver"
         _LOGGER.debug(f"SerialReceiver.__init(entry)__, id: {self._attr_unique_id}")
         self._attr_translation_placeholders = {"port": port}
-        self._connection : RS485Connection = entry.runtime_data
+        self._connection : SerialConnection = entry.runtime_data
 
     async def async_added_to_hass(self) -> None:
         """register at connection"""

@@ -12,14 +12,14 @@ from __future__ import annotations
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_PORT, Platform
 from homeassistant.core import HomeAssistant
-from .connection import RS485Connection
+from .connection import SerialConnection
 from .const import BAUD_RATE
 
 PLATFORMS = [Platform.NOTIFY, Platform.SENSOR]
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     # Open the port in the background and set up the entity.
-    entry.runtime_data = RS485Connection(entry.data[CONF_PORT], int(entry.data[BAUD_RATE]))
+    entry.runtime_data = SerialConnection(entry.data[CONF_PORT], int(entry.data[BAUD_RATE]))
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     entry.async_create_background_task(hass, entry.runtime_data.run(), "serial_transceiver")
     entry.async_on_unload(entry.add_update_listener(_async_options_updated))
