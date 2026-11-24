@@ -65,11 +65,11 @@ class SerialConnection:
             self.connected = False
             await asyncio.sleep(RECONNECT_DELAY)
 
-    def send(self, message: str) -> None:
+    async def send(self, message: str) -> None:
         """Queue a message"""
         if not self.connected:
             raise ConnectionError(f"Receiver not connected on {self.port}")
-        self._queue.put_nowait(message)
+        await self._queue.put(message)
 
     async def _session(self) -> None:
         _LOGGER.debug(f"Trying to connect to {self.port} with {self.baud_rate} symbols/sec")
