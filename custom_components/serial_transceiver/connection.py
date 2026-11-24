@@ -8,7 +8,7 @@ This code is derived from https://github.com/RyanMathewson/home-assistant-onkyo-
 from __future__ import annotations
 from collections.abc import Callable
 from homeassistant.exceptions import HomeAssistantError
-from .const import CLOSE_TIMEOUT, DOMAIN, RECONNECT_DELAY, SEND_GAP
+from .const import CLOSE_TIMEOUT, DOMAIN, RECONNECT_DELAY, SEND_GAP, UTF8
 import asyncio, logging, serial_asyncio_fast, time
 
 _LOGGER = logging.getLogger(__name__)
@@ -17,7 +17,7 @@ class SerialConnection:
     # Owns the serial port
 
     def _handle_frame(self, frame: bytes) -> None:
-        text = frame.decode("ascii", errors="ignore").strip()
+        text = frame.decode(UTF8, errors="ignore").strip()
         _LOGGER.debug(f"Receiver received {text}")
         if self._sensor:
             self._sensor.handle_value(text)
@@ -99,6 +99,6 @@ class SerialConnection:
         """asynchronous waiting for queued messages. These will be sent on the serial line"""
         while True:
             command = await self._queue.get()
-            writer.write(f"{command}\n".encode("ascii"))
+            writer.write(f"{command}\n".encode(UTF8))
             await writer.drain()
             await asyncio.sleep(SEND_GAP)
