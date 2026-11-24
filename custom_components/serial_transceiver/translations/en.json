@@ -18,6 +18,11 @@
       "already_configured": "This port is already set up."
     }
   },
+  "exceptions": {
+    "disconnect": {
+      "message": "Serial device disconnected!"
+    }
+  },
   "entity": {
     "notify": {
       "sender": {

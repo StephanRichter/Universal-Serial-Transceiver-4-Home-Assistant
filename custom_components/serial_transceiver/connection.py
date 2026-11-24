@@ -7,9 +7,9 @@ This code is derived from https://github.com/RyanMathewson/home-assistant-onkyo-
 """
 from __future__ import annotations
 from collections.abc import Callable
-from .const import CLOSE_TIMEOUT, RECONNECT_DELAY, SEND_GAP
+from homeassistant.exceptions import HomeAssistantError
+from .const import CLOSE_TIMEOUT, DOMAIN, RECONNECT_DELAY, SEND_GAP
 import asyncio, logging, serial_asyncio_fast, time
-
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -68,7 +68,7 @@ class SerialConnection:
     async def send(self, message: str) -> None:
         """Queue a message"""
         if not self.connected:
-            raise ConnectionError(f"Receiver not connected on {self.port}")
+            raise HomeAssistantError(translation_domain=DOMAIN, translation_key="disconnect") from ConnectionError(f"Receiver not connected on {self.port}")
         await self._queue.put(message)
 
     async def _session(self) -> None:
