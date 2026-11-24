@@ -3,6 +3,7 @@
     "step": {
       "user": {
         "data": {
+          "baud_rate": "Baud rate",
           "port": "Serial port"
         },
         "data_description": {
