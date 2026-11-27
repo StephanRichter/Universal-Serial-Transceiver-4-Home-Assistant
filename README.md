@@ -45,4 +45,7 @@ The integration holds the port with an exclusive lock, so nothing else can use i
 
 ## License
 
+This code is derived from https://github.com/RyanMathewson/home-assistant-onkyo-serial
+
+
 [MIT](LICENSE)
