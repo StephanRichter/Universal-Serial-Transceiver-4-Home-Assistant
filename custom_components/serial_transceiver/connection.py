@@ -19,8 +19,8 @@ class SerialConnection:
     def _handle_frame(self, frame: bytes) -> None:
         text = frame.decode(UTF8, errors="ignore").strip()
         _LOGGER.debug(f"Receiver received {text}")
-        if self._sensor:
-            self._sensor.handle_value(text)
+        if self._serial:
+            self._serial.handle_value(text)
 
 
     def __init__(self, port: str, baud_rate: int) -> None:
@@ -29,13 +29,13 @@ class SerialConnection:
         self.connected                       = False
         self._queue: asyncio.Queue[str]      = asyncio.Queue()
         self._last_error: str | None         = None
-        self._sensor: RS485HomeSensor | None = None
+        self._serial: SerialReceiver | None = None
 
-    def link_sensor(self, sensor: RS485HomeSensor|None) -> Callable:
-        """sets the _sensor field of the connection. This is where incoming messages are sent to"""
-        _LOGGER.debug("installed sensor" if sensor else "uninstalled sensor")
-        self._sensor = sensor
-        return lambda: self.link_sensor(None)
+    def link_receiver(self, receiver: SerialReceiver | None) -> Callable:
+        """sets the _serial field of the connection. This is where incoming messages are sent to"""
+        _LOGGER.debug("installed sensor" if receiver else "uninstalled sensor")
+        self._serial = receiver
+        return lambda: self.link_receiver(None)
 
     async def _read_loop(self, reader: asyncio.StreamReader) -> None:
         """asynchronous waiting for incoming messages"""

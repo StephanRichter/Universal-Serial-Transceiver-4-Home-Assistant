@@ -37,7 +37,7 @@ class SerialReceiver(SensorEntity):
     async def async_added_to_hass(self) -> None:
         """register at connection"""
         self.async_on_remove(
-            self._connection.link_sensor(self)
+            self._connection.link_receiver(self)
         )
 
     def handle_value(self, text: str):
