@@ -18,7 +18,7 @@ class SerialConnection:
 
     def _handle_frame(self, frame: bytes) -> None:
         text = frame.decode(UTF8, errors="ignore").strip()
-        _LOGGER.debug(f"Receiver received {text}")
+        _LOGGER.debug(f"Receiver received '{text}'")
         if self._serial:
             self._serial.handle_value(text)
 

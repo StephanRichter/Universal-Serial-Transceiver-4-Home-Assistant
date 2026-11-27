@@ -33,5 +33,5 @@ class SerialTransmitter(NotifyEntity):
 
     async def async_send_message(self, message: str, title: str | None = None) -> None:
         """hand over message to connection.send(…)"""
-        _LOGGER.debug(f"async_send_message({message}, {title}) (ignoring {title})")
+        _LOGGER.debug(f"async_send_message('{message}', {title}) (ignoring {title})")
         await self._connection.send(message)
