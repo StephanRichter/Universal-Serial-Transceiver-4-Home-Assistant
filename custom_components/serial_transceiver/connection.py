@@ -47,7 +47,6 @@ class SerialConnection:
             if not self.connected:
                 self.connected   = True
                 self._last_error = None
-                _LOGGER.info("Receiver connected on %s", self.port)
             self._handle_frame(frame)
 
     async def run(self) -> None:
@@ -74,6 +73,10 @@ class SerialConnection:
     async def _session(self) -> None:
         _LOGGER.debug(f"Trying to connect to {self.port} with {self.baud_rate} symbols/sec")
         reader, writer = await serial_asyncio_fast.open_serial_connection(url=self.port,baudrate=self.baud_rate,bytesize=8,parity="N",stopbits=1,xonxoff=False,rtscts=False,exclusive=True)
+        if not self.connected:
+            self.connected   = True
+            self._last_error = None
+            _LOGGER.info("Receiver connected on %s", self.port)
 
         self._queue = asyncio.Queue()
         tasks = [
