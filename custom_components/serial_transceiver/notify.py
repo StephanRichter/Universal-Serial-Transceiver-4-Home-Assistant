@@ -7,8 +7,9 @@ Messages posted to this entity will be written to the serial line.
 import logging
 from homeassistant.components.notify import NotifyEntity
 from homeassistant.const import CONF_PORT
+from homeassistant.config_entries import ConfigEntry
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from .connection import SerialConnection
-
 _LOGGER = logging.getLogger(__name__)
 
 

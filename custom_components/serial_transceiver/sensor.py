@@ -5,13 +5,16 @@ This creates a Sensor Entity when the connection is set up.
 This sensor receives incoming messages from the serial line.
 """
 import logging
+from homeassistant.core import HomeAssistant
 from homeassistant.components.notify import NotifyEntity
 from homeassistant.components.sensor import (
     SensorDeviceClass,
     SensorEntity,
     SensorStateClass,
 )
+from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_PORT, UnitOfTemperature
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from .connection import SerialConnection
 
 _LOGGER = logging.getLogger(__name__)
