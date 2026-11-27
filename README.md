@@ -9,7 +9,7 @@ Contrary to Home Assistant's [Raw Serial](https://www.home-assistant.io/integrat
 ## Features
 
 * A `sensor` entity that receives messages from the serial line. These messages are not processed further.  
-Processing is left for the user, for exampe using templates.
+Processing is left for the user, for example using templates.
 * A `notify` entity that can be used to push messages.  
 Any value assigned to this entity will be written onto the serial line. 
 
