@@ -1,5 +1,5 @@
 - alias: Echo
-  description: 'This automation echoes back all messages received via the rs485_home_ttyacm0_sensor'
+  description: 'This automation echoes back all messages received via the serial_receiver_ttyacm0'
   triggers:
     - trigger: state
       entity_id:
