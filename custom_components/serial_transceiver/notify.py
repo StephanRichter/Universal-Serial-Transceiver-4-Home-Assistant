@@ -8,6 +8,7 @@ import logging
 from homeassistant.components.notify import NotifyEntity
 from homeassistant.const import CONF_PORT
 from homeassistant.config_entries import ConfigEntry
+from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from .connection import SerialConnection
 _LOGGER = logging.getLogger(__name__)
